@@ -1,0 +1,31 @@
+﻿@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+body {
+}
+#result-imc {
+    margin-bottom:0.5em;
+    text-align:center;
+}
+#result-img {
+    margin-bottom:0.5em;
+    text-align:center;
+}
+#info-section {
+    display: none;
+}
+.row{
+    border: 1px solid rgba(51, 51, 51, .5);
+}
+.row.title{
+    font-weight:bold;
+    border:none;
+    margin-top:20px;
+}
+.bg-warning-plus {
+    background-color:#ee5d00!important;
+}
+label span{
+    font-weight:normal;
+    font-size:0.7em;
+}

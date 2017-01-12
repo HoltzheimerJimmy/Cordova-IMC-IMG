@@ -1,0 +1,11 @@
+{
+     "android": {
+         "release": {
+             "keystore":"c:\\appliplay.keystore",
+             "storePassword":"pwd123",
+             "alias":"appliplay",
+             "password":"pwd123",
+             "keystoreType":""
+         }
+     }
+ }

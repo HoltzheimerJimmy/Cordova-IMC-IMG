@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+
+    <!--
+        Personnalisez la stratégie de sécurité de contenu dans la balise méta ci-dessous selon vos besoins. Ajoutez 'unsafe-inline' à default-src pour activer JavaScript directement dans les lignes.
+        Pour obtenir des détails, consultez http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+    <title>IMC-IMG</title>
+
+    <!-- Références IMCIMG -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="col-xs-12"><h3>Calculez votre poids idéal</h3></header>
+    <content class="col-xs-12">
+        <form class="col-xs-12">
+            <fieldset class="form-group col-xs-6">
+                <label for="gender">Sexe</label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="optionsRadios1" value="1" checked>
+                        Homme
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="optionsRadios2" value="0">
+                        Femme
+                    </label>
+                </div>
+            </fieldset>
+            <div class="form-group col-xs-6">
+                <label for="age">Age </label>
+                <input type="number" class="form-control" id="age" min="1" max="150" step="1">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="size">Taille <span>en cm</span></label>
+                <input type="number" class="form-control" id="size" placeholder="Votre taille en cm" min="1" max="300" step="1">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="weight">Poids <span>en kg</span></label>
+                <input type="number" class="form-control" id="weight" placeholder="Votre poids en kg" min="0" max="500" step="0.01">
+            </div>
+            <div class="form-group col-xs-12">
+                <button id="calcul" class="btn btn-primary col-xs-6">Calculer</button>
+            </div>
+        </form>
+        <div id="result" class="col-xs-12">
+            <div id="result-imc"></div>
+            <div id="result-img"></div>
+            <div id="result-ideal" class="col-xs-12"></div>
+        </div>
+        <div id="info-section" class="col-xs-12">
+            <div class="col-xs-12">
+                <div class="row title">
+                    <div class="col-xs-12">Légende de l'indice de masse corporelle</div>
+                </div>
+                <div class="row title">
+                    <div class="col-xs-6">Indice</div>
+                    <div class="col-xs-6">Explication</div>
+                </div>
+                <div class="row bg-danger">
+                    <div class="col-xs-6">0-16</div>
+                    <div class="col-xs-6">Dénutrition</div>
+                </div>
+                <div class="row bg-warning">
+                    <div class="col-xs-6">17-18</div>
+                    <div class="col-xs-6">Maigreur</div>
+                </div>
+                <div class="row bg-success">
+                    <div class="col-xs-6">19-25</div>
+                    <div class="col-xs-6">Corpulence Normale</div>
+                </div>
+                <div class="row bg-warning">
+                    <div class="col-xs-6">26-30</div>
+                    <div class="col-xs-6">Surpoid</div>
+                </div>
+                <div class="row bg-warning-plus">
+                    <div class="col-xs-6">31-35</div>
+                    <div class="col-xs-6">Obèsité Modérée</div>
+                </div>
+                <div class="row bg-danger">
+                    <div class="col-xs-6">36-40</div>
+                    <div class="col-xs-6">Obèsité Sévère</div>
+                </div>
+                <div class="row bg-inverse">
+                    <div class="col-xs-6">41 et plus</div>
+                    <div class="col-xs-6">Obèsité Morbide</div>
+                </div>
+            </div>
+            <div class="col-xs-12 mt-20">
+                <div class="row title">
+                    <div class="col-xs-12">Légende de l'indice de masse graisseuse</div>
+                </div>
+                <div class="row title">
+                    <div class="col-xs-6">Indice</div>
+                    <div class="col-xs-6">Explication</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4">Homme</div>
+                    <div class="col-xs-4">Femme</div>
+                </div>
+                <div class="row bg-warning">
+                    <div class="col-xs-4">Trop Maigre</div>
+                    <div class="col-xs-4"><15</div>
+                    <div class="col-xs-4"><25</div>
+                </div>
+                <div class="row bg-success">
+                    <div class="col-xs-4">Normal</div>
+                    <div class="col-xs-4">15-20</div>
+                    <div class="col-xs-4">25-30</div>
+                </div>
+                <div class="row bg-warning">
+                    <div class="col-xs-4">Trop de graisse</div>
+                    <div class="col-xs-4">>20</div>
+                    <div class="col-xs-4">>30</div>
+                </div>
+            </div>
+        </div>
+    </content>
+    <script>
+        function info() {
+            $("form").toggle();
+            $("#info-section").toggle();
+        };
+    </script>
+    <!-- Référence Cordova ajoutée à votre application une fois générée. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
